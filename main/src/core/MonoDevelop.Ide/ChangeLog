@@ -1,5 +1,15 @@
 2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
 
+	* SearchEntry.cs:
+	* DefaultWorkbench.cs:
+	* MainToolbar.cs: mods for gtkrc use
+
+	* Tabstrip.cs: mods for gtkrc use
+
+	* MonoDevelopStatusBar.cs: modification for gtkrc use
+
+2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
+
 	* gtkrc: missed style declaration for docnotebooktab
 
 2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>

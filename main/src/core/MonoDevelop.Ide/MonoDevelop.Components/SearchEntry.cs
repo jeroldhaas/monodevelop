@@ -419,7 +419,7 @@ namespace MonoDevelop.Components
 			if (hasFrame && roundedShape && customRoundedShapeDrawing) {
 				using (var ctx = Gdk.CairoHelper.Create (GdkWindow)) {
 					RoundBorder (ctx, alloc.X + 0.5, alloc.Y + 0.5, alloc.Width - 1, alloc.Height - 1);
-					ctx.SetSourceColor (Styles.WidgetBorderColor);
+					ctx.SetSourceColor (entry.Style.Base (Gtk.StateType.Normal).ToCairoColor ()); //Styles.WidgetBorderColor);
 					ctx.LineWidth = 1;
 					ctx.Stroke ();
 				}

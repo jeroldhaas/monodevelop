@@ -845,21 +845,21 @@ namespace MonoDevelop.Ide.Gui
 			documentDockItem.Content = new DockNotebookContainer (tabControl, true);
 
 			DockVisualStyle style = new DockVisualStyle ();
-			style.PadTitleLabelColor = Styles.PadLabelColor;
-			style.PadBackgroundColor = Styles.PadBackground;
-			style.InactivePadBackgroundColor = Styles.InactivePadBackground;
+			style.PadTitleLabelColor = this.Style.Text(State); //Styles.PadLabelColor;
+			style.PadBackgroundColor = this.Style.Backgrounds[State.GetHashCode()]; //Styles.PadBackground;
+			style.InactivePadBackgroundColor = this.Style.Backgrounds[State.GetHashCode()]; //Styles.InactivePadBackground;
 			style.PadTitleHeight = barHeight;
 			dock.DefaultVisualStyle = style;
 
 			style = new DockVisualStyle ();
-			style.PadTitleLabelColor = Styles.PadLabelColor;
+			style.PadTitleLabelColor = this.Style.Text(State); //Styles.PadLabelColor;
 			style.PadTitleHeight = barHeight;
 			style.ShowPadTitleIcon = false;
 			style.UppercaseTitles = false;
 			style.ExpandedTabs = true;
-			style.PadBackgroundColor = Styles.BrowserPadBackground;
-			style.InactivePadBackgroundColor = Styles.InactiveBrowserPadBackground;
-			style.TreeBackgroundColor = Styles.BrowserPadBackground;
+			style.PadBackgroundColor = this.Style.Backgrounds[State.GetHashCode()]; //Styles.BrowserPadBackground;
+			style.InactivePadBackgroundColor = this.Style.Backgrounds[StateType.Normal.GetHashCode()]; //Styles.InactiveBrowserPadBackground;
+			style.TreeBackgroundColor = this.Style.Base(State);//Styles.BrowserPadBackground;
 			dock.SetDockItemStyle ("ProjectPad", style);
 			dock.SetDockItemStyle ("ClassPad", style);
 

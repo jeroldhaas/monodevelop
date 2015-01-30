@@ -37,8 +37,6 @@ namespace MonoDevelop.Components
 {
 	class Tabstrip : DrawingArea
 	{
-		static readonly Cairo.Color BackgroundGradientStart = new Cairo.Color (241d / 255d, 241d / 255d, 241d / 255d);
-		static readonly Cairo.Color BackgroundGradientEnd = BackgroundGradientStart;//new Cairo.Color (224d / 255d, 224d / 255d, 224d / 255d);
 		internal static readonly Cairo.Color ActiveGradientStart = new Cairo.Color (92d / 255d, 93d / 255d, 94d / 255d);
 		internal static readonly Cairo.Color ActiveGradientEnd = new Cairo.Color (134d / 255d, 136d / 255d, 137d / 255d);
 
@@ -182,8 +180,8 @@ namespace MonoDevelop.Components
 			using (var cr = Gdk.CairoHelper.Create (evnt.Window)) {
 				cr.Rectangle (0, 0, Allocation.Width, Allocation.Height);
 				using (LinearGradient gr = new LinearGradient (0, 0, 0, Allocation.Height)) {
-					gr.AddColorStop (0, BackgroundGradientStart);
-					gr.AddColorStop (1, BackgroundGradientEnd);
+					gr.AddColorStop (0, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor());
+					gr.AddColorStop (1, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor());
 					cr.SetSource (gr);
 				}
 				cr.Fill ();
