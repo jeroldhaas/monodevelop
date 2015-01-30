@@ -1,5 +1,9 @@
 2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
 
+	* gtkrc: testing git config for easier pushes
+
+2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
+
 	* StatusArea.cs: added gtkrc support for StatusArea (not sure
 	if working) :S
 

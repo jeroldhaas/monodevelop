@@ -484,3 +484,5 @@ widget_class "RoundButton" style "roundbutton"
 widget_class "*<GtkComboBox>" style "teststyle"
 
 widget_class "StatusArea" style "teststyle"
+
+##git update test
