@@ -29,6 +29,7 @@ using Gdk;
 using MonoDevelop.Components;
 using Cairo;
 using MonoDevelop.Ide;
+using MonoDevelop.Ide.Gui;
 using System.Reflection;
 using Mono.TextEditor;
 
@@ -168,36 +169,36 @@ namespace MonoDevelop.Components.MainToolbar
 
 			context.MoveTo (centerX + rad, centerY);
 			context.Arc (centerX, centerY, rad, 0, Math.PI * 2);
-
-			double high;
-			double low;
-			switch (state) {
-			case StateType.Selected:
-				high = 0.85;
-				low = 1.0;
-				break;
-			case StateType.Prelight:
-				high = 1.0;
-				low = 0.9;
-				break;
-			case StateType.Insensitive:
-				high = 0.95;
-				low = 0.83;
-				break;
-			default:
-				high = 1.0;
-				low = 0.85;
-				break;
-			}
+            
+            Cairo.Color high = this.Style.Backgrounds[this.State.GetHashCode()].ToCairoColor();
+            Cairo.Color low = this.Style.Backgrounds[this.State.GetHashCode()].ToCairoColor();
+//			switch (state) {
+//			case StateType.Selected:
+//                high = Styles.Shift (0.85, high);
+//                low = Styles.Shift (1.0, low);
+//				break;
+//			case StateType.Prelight:
+//                high = Styles.Shift (1.0, high);
+//                low = Styles.Shift (0.9, high);
+//				break;
+//			case StateType.Insensitive:
+//                high = Styles.Shift (0.95, high);
+//                low = Styles.Shift (0.83, high);
+//				break;
+//			default:
+//                high = Styles.Shift (1.0, high);
+//                low = Styles.Shift (0.85, low);
+//				break;
+//			}
 			using (var lg = new LinearGradient (0, centerY - rad, 0, centerY +rad)) {
-				lg.AddColorStop (0, new Cairo.Color (high, high, high));
-				lg.AddColorStop (1, new Cairo.Color (low, low, low));
+				lg.AddColorStop (0, high);
+				lg.AddColorStop (1, low);
 				context.SetSource (lg);
 				context.FillPreserve ();
 			}
 
 			context.SetSourceRGBA (0, 0, 0, 0.4);
-			context.LineWidth = 1;
+			context.LineWidth = this.Style.XThickness; // 1;
 			context.Stroke ();
 		}
 

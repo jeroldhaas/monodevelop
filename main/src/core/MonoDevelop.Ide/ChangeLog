@@ -1,3 +1,15 @@
+2015-01-29  Jerold Haas  <jeroldhaas@gmail.com>
+
+	* RoundButton.cs: alter DrawBackground to use gtkrc settings
+
+	* IdeStartup.cs: added section for other devs to implement
+	MONODEVELOP_DARK Environment variable... also commented out
+	selector code for prototyping use
+
+	* gtkrc: replace default gtkrc for finding out what doesn't
+	pull from gtkrc (this one's pretty extensive)
+
+
 2010-08-04  Lluis Sanchez Gual  <lluis@novell.com>
 
 	* Makefile.am:
