@@ -1,5 +1,9 @@
 2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
 
+	* gtkrc: missed style declaration for docnotebooktab
+
+2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
+
 	* TabStrip.cs: de-coupled TabStrip from Styles.cs
 
 	* gtkrc: added style assignment for TabStrip
