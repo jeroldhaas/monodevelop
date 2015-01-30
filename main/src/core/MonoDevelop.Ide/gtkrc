@@ -456,7 +456,6 @@ widget_class "EShellWindow.GtkVBox.BonoboDock.BonoboDockBand.BonoboDockItem*" st
 # MonoDevelop-Specific Styles
 ######################################
 
-#widget_class "*<RoundButton>*<GtkEventBox>" style "notebook_bg"
 style "teststyle" {
 	bg[NORMAL] 			= #FF0000
 	bg[PRELIGHT]		= #FF0000
@@ -469,9 +468,8 @@ style "teststyle" {
 	fg[ACTIVE]			= #FF0000
 	fg[INSENSITIVE]		= #FF0000
 	fg[SELECTED]		= #FF0000
-
-
 }
+
 style "roundbutton" {
 
 	text[NORMAL]      	= @fg_color
@@ -482,4 +480,7 @@ style "roundbutton" {
 	bg[NORMAL]			= #ff0000
 }
 widget_class "RoundButton" style "roundbutton"
-widget_class "MonoDevelop.Components.DockNotebook.TabStrip" shade(1.08, #c2c2c2)
+# not working yet - GtkComboBox bug?
+widget_class "*<GtkComboBox>" style "teststyle"
+
+widget_class "StatusArea" style "teststyle"

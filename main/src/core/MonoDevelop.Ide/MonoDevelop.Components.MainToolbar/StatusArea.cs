@@ -900,9 +900,9 @@ namespace MonoDevelop.Components.MainToolbar
 				//alloc.Inflate (0, -2);
 				ctx.Rectangle (alloc.X, alloc.Y, 1, alloc.Height);
 				using (Cairo.LinearGradient gr = new LinearGradient (alloc.X, alloc.Y, alloc.X, alloc.Y + alloc.Height)) {
-					gr.AddColorStop (0, new Cairo.Color (0, 0, 0, 0));
-					gr.AddColorStop (0.5, new Cairo.Color (0, 0, 0, 0.2));
-					gr.AddColorStop (1, new Cairo.Color (0, 0, 0, 0));
+					gr.AddColorStop (0,     this.Style.Backgrounds[StateType.Normal.GetHashCode()].ToCairoColor());// new Cairo.Color (0, 0, 0, 0));
+					gr.AddColorStop (0.5,   this.Style.Backgrounds[StateType.Normal.GetHashCode()].ToCairoColor());// new Cairo.Color (0, 0, 0, 0.2));
+					gr.AddColorStop (1,     this.Style.Backgrounds[StateType.Normal.GetHashCode()].ToCairoColor());//new Cairo.Color (0, 0, 0, 0));
 					ctx.SetSource (gr);
 					ctx.Fill ();
 				}

@@ -1,3 +1,13 @@
+2015-01-30  Jerold Haas  <jeroldhaas@gmail.com>
+
+	* StatusArea.cs: added gtkrc support for StatusArea (not sure
+	if working) :S
+
+	* gtkrc: * added "teststyle" assignment for GtkComboBox (may
+	be broken due to syntax or GTK# verison)
+	* added "teststyle" assignment for StatusArea (not sure if
+	working or not) :S
+
 2015-01-29  Jerold Haas  <jeroldhaas@gmail.com>
 
 	* RoundButton.cs: alter DrawBackground to use gtkrc settings
