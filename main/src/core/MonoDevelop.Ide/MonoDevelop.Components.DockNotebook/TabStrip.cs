@@ -623,11 +623,11 @@ namespace MonoDevelop.Components.DockNotebook
 			ctx.Rectangle (0, 0, region.Width, h);
 			using (var gr = new LinearGradient (0, 0, 0, h)) {
 				if (isActiveNotebook) {
-					gr.AddColorStop (0, Styles.TabBarActiveGradientStartColor);
-					gr.AddColorStop (1, Styles.TabBarActiveGradientEndColor);
+					gr.AddColorStop (0, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor()); //Styles.TabBarActiveGradientStartColor);
+					gr.AddColorStop (1, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor());//Styles.TabBarActiveGradientEndColor);
 				} else {
-					gr.AddColorStop (0, Styles.TabBarGradientStartColor);
-					gr.AddColorStop (1, Styles.TabBarGradientEndColor);
+					gr.AddColorStop (0, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor()); //Styles.TabBarGradientStartColor);
+					gr.AddColorStop (1, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor()); //Styles.TabBarGradientEndColor);
 				}
 				ctx.SetSource (gr);
 				ctx.Fill ();
@@ -636,7 +636,7 @@ namespace MonoDevelop.Components.DockNotebook
 			ctx.MoveTo (region.X, 0.5);
 			ctx.LineTo (region.Right + 1, 0.5);
 			ctx.LineWidth = 1;
-			ctx.SetSourceColor (Styles.TabBarGradientShadowColor);
+			//ctx.SetSourceColor (Styles.TabBarGradientShadowColor);
 			ctx.Stroke ();
 		}
 
@@ -737,7 +737,7 @@ namespace MonoDevelop.Components.DockNotebook
 			// Draw breadcrumb bar header
 			if (notebook.Tabs.Count > 0) {
 				ctx.Rectangle (0, allocation.Height - BottomBarPadding, allocation.Width, BottomBarPadding);
-				ctx.SetSourceColor (Styles.BreadcrumbBackgroundColor);
+				ctx.SetSourceColor (this.Style.Backgrounds[State.GetHashCode()].ToCairoColor()); //Styles.BreadcrumbBackgroundColor);
 				ctx.Fill ();
 			}
 
@@ -840,11 +840,11 @@ namespace MonoDevelop.Components.DockNotebook
 			ctx.ClosePath ();
 			using (var gr = new LinearGradient (tabBounds.X, TopBarPadding, tabBounds.X, allocation.Bottom)) {
 				if (active) {
-					gr.AddColorStop (0, Styles.BreadcrumbGradientStartColor.MultiplyAlpha (tab.Opacity));
-					gr.AddColorStop (1, Styles.BreadcrumbBackgroundColor.MultiplyAlpha (tab.Opacity));
+					gr.AddColorStop (0, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor().MultiplyAlpha (tab.Opacity));
+                    gr.AddColorStop (1, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor().MultiplyAlpha (tab.Opacity));
 				} else {
-					gr.AddColorStop (0, CairoExtensions.ParseColor ("f4f4f4").MultiplyAlpha (tab.Opacity));
-					gr.AddColorStop (1, CairoExtensions.ParseColor ("cecece").MultiplyAlpha (tab.Opacity));
+                    gr.AddColorStop (0, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor().MultiplyAlpha (tab.Opacity));
+                    gr.AddColorStop (1, this.Style.Backgrounds[State.GetHashCode()].ToCairoColor().MultiplyAlpha (tab.Opacity));
 				}
 				ctx.SetSource (gr);
 			}
@@ -854,7 +854,7 @@ namespace MonoDevelop.Components.DockNotebook
 			LayoutTabBorder (ctx, allocation, tabBounds.Width, tabBounds.X, 1, active);
 			ctx.Stroke ();
 
-			ctx.SetSourceColor (Styles.BreadcrumbBorderColor.MultiplyAlpha (tab.Opacity));
+            ctx.SetSourceColor (this.Style.Backgrounds[State.GetHashCode()].ToCairoColor().MultiplyAlpha (tab.Opacity));
 			LayoutTabBorder (ctx, allocation, tabBounds.Width, tabBounds.X, 0, active);
 			ctx.StrokePreserve ();
 
@@ -900,12 +900,12 @@ namespace MonoDevelop.Components.DockNotebook
 				// If that bug get's fixed remove this HACK asap.
 				la.Ellipsize = Pango.EllipsizeMode.End;
 				la.Width = (int)(w * Pango.Scale.PangoScale);
-				ctx.SetSourceColor (tab.Notify ? new Cairo.Color (0, 0, 1) : Styles.TabBarActiveTextColor);
+                ctx.SetSourceColor (tab.Notify ? this.Style.Backgrounds[State.GetHashCode()].ToCairoColor() : this.Style.Backgrounds[State.GetHashCode()].ToCairoColor());
 				Pango.CairoHelper.ShowLayoutLine (ctx, la.GetLine (0));
 			} else {
 				// ellipses are for space wasting ..., we cant afford that
 				using (var lg = new LinearGradient (textStart + w - 5, 0, textStart + w + 3, 0)) {
-					var color = tab.Notify ? new Cairo.Color (0, 0, 1) : Styles.TabBarActiveTextColor;
+                    var color = tab.Notify ? this.Style.Backgrounds[State.GetHashCode()].ToCairoColor() : this.Style.Backgrounds[State.GetHashCode()].ToCairoColor();
 					color = color.MultiplyAlpha (tab.Opacity);
 					lg.AddColorStop (0, color);
 					color.A = 0;

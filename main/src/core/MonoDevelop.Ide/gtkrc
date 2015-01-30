@@ -484,5 +484,6 @@ widget_class "RoundButton" style "roundbutton"
 widget_class "*<GtkComboBox>" style "teststyle"
 
 widget_class "StatusArea" style "teststyle"
-
-##git update test
+widget_class "ButtonBar" style "teststyle"
+widget_class "TabStrip" style "teststyle"
+widget_class "DocNotebookTab" style "docnotebooktab"
